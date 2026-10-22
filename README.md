@@ -15,7 +15,7 @@ npm.cmd run dev
 
 Bei bereits eingerichtetem Projekt reicht `npm.cmd run dev`. URL: http://127.0.0.1:3000. Der Server bindet ausschliesslich an die lokale Loopback-Adresse. Beenden mit Strg+C.
 
-In diesem OneDrive-Projekt wurden Fehler beim automatischen Bereinigen von Next.js-Entwicklungsdateien beobachtet. Für den normalen Betrieb wird deshalb der geprüfte lokale Produktionsmodus empfohlen: einmal `npm.cmd run build`, danach `npm.cmd start`. Auch dieser Modus benötigt kein Hosting. Entwicklung mit Hot Reload möglichst in einem Ordner ausserhalb von OneDrive durchführen.
+`npm.cmd run dev` startet unter Windows über `scripts/dev.mjs` den regulären Turbopack-Dev-Server. Der Next.js-Cache liegt dauerhaft unter `%LOCALAPPDATA%/RobloxAIStudio/<Projekt-ID>/.next`, ausserhalb von OneDrive. Eine lokale Verzeichnisverknüpfung (Junction) hält den erwarteten Projektpfad `.next` verfügbar. Quellen und SQLite bleiben im Projekt. Ein zuvor vorhandener Cache wird einmalig als `.next-backup-<Zeitstempel>` gesichert und von Git ausgeschlossen. Die Verknüpfung wird bei weiteren Starts wiederverwendet; es werden keine Administratorrechte für eine Junction benötigt. Dadurch werden OneDrive-Reparse-Points in den Build-Unterordnern und der beobachtete Webpack-Manifestfehler vermieden. Hot Reload ist weiterhin aktiv. Für Produktionsbetrieb stehen `npm.cmd run build` und `npm.cmd start` zur Verfügung.
 
 ## Bedienung
 
