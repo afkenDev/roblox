@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env*
+!.env.example
+prisma/*.db*
+*.tsbuildinfo
+dev-*.log
+.studio-smoke/
+studio-preview.png
